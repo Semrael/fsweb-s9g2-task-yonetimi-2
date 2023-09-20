@@ -14,16 +14,19 @@ const Task = ({ taskObj, onComplete }) => {
   console.log(taskObj.deadline, differenceInDays(tarih, new Date()));
 
   return (
-    <div className="task">
-      <h3>{taskObj.title}</h3>
-      <div className="deadline">
-        son teslim: <span className={accentCkass}>{kalanGun}</span>
+    <div className="p-6 bg-white rounded-md leading-normal mt-4 shadow-[0_4px_5px_0_rgb(0,0,0,0.1)]">
+      <h3 className="text-lg text-turuncu">{taskObj.title}</h3>
+      <div className="text-xs pt-1">
+        son teslim:{" "}
+        <span className={`${accentCkass} py-1 px-2 rounded-sm inline-block`}>
+          {kalanGun}
+        </span>
       </div>
-      <p>{taskObj.description}</p>
+      <p className="pt-2 pb-3 text-sm text-gri">{taskObj.description}</p>
       <div>
         {taskObj.people.map((p) => (
           <span
-            className="inline-block py-[5px] px-3  text-sm  border-[1px] border-[#ccc] mr-1 mb-1.5 rounded-[30px]"
+            className="inline-block py-[5px] px-3  text-sm  border-2 border-solid border-borderColor mr-1 mb-1.5 rounded-[30px]"
             key={p}
           >
             {p}
@@ -31,7 +34,12 @@ const Task = ({ taskObj, onComplete }) => {
         ))}
       </div>
       {onComplete && (
-        <button onClick={() => onComplete(taskObj.id)}>Tamamlandı</button>
+        <button
+          className="block py-2 px-3 ml-auto bg-[#fecc91] shadow-[0_4px_5px_0_rgb(0,0,0,0.05)] rounded-1 border-0 cursor-pointer"
+          onClick={() => onComplete(taskObj.id)}
+        >
+          Tamamlandı
+        </button>
       )}
     </div>
   );
